@@ -6,6 +6,8 @@
     {% assign price = '<%= element.price %>' %}
       {% assign model_brand = '<%= element.meta.custom.model_brand %>' %}
         {% assign sku = '<%= element.sku %>' %}
-          {% render 'test-collection-ejs', title: title, price: price, model_brand: model_brand | join:
-          ',', sku: sku %}
-          <% }); %>
+          {% assign description = '<%= element.body_html_safe %>' %}
+            {% assign image = '<%= element.image %>' %}
+              {% render 'test-collection-ejs', title: title, price: price, model_brand: model_brand | join:
+              ',', sku: sku, description: description, image: image %}
+              <% }); %>

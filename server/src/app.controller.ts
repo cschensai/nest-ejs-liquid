@@ -20,13 +20,13 @@ export class AppController {
   }
 
   @Get('collections/:params')
-  @Render('collection-list')
+  @Render('collection-list') // 调试数据注释掉
   async getCollectionList(
     @Param('params') params: string,
-    @Res() res: Response,
-  ) {
+    @Res() res: Response, // 调试数据注释掉
+  ): Promise<{ collections: any }> {
     const _collections = await this.appService.getCollectionList(params);
-    res.setHeader('Content-Type', 'application/liquid');
+    res.setHeader('Content-Type', 'application/liquid'); // 调试数据注释掉
     return { collections: _collections.hits }
   }
 }
