@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Res } from '@nestjs/common';
+import { Controller, Get, Param, Render, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import type { Response } from 'express';
 
@@ -19,11 +19,14 @@ export class AppController {
     return { status: 'ok' };
   }
 
-  @Get('collectionlist')
+  @Get('collections/:params')
   @Render('collection-list')
-  async etCollectionList(@Res() res: Response): Promise<{ collections: any }> {
-    const _collections = await this.appService.getCollectionList();
+  async getCollectionList(
+    @Param('params') params: string,
+    @Res() res: Response,
+  ) {
+    const _collections = await this.appService.getCollectionList(params);
     res.setHeader('Content-Type', 'application/liquid');
-    return { collections: _collections.hits };
+    return { collections: _collections.hits }
   }
 }

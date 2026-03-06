@@ -26,8 +26,8 @@ let AppController = class AppController {
     getHealth() {
         return { status: 'ok' };
     }
-    async etCollectionList(res) {
-        const _collections = await this.appService.getCollectionList();
+    async getCollectionList(params, res) {
+        const _collections = await this.appService.getCollectionList(params);
         res.setHeader('Content-Type', 'application/liquid');
         return { collections: _collections.hits };
     }
@@ -48,13 +48,14 @@ __decorate([
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getHealth", null);
 __decorate([
-    (0, common_1.Get)('collectionlist'),
+    (0, common_1.Get)('collections/:params'),
     (0, common_1.Render)('collection-list'),
-    __param(0, (0, common_1.Res)()),
+    __param(0, (0, common_1.Param)('params')),
+    __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "etCollectionList", null);
+], AppController.prototype, "getCollectionList", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

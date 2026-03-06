@@ -9,7 +9,7 @@ export declare class AppController {
     getHealth(): {
         status: string;
     };
-    etCollectionList(res: Response): Promise<{
+    getCollectionList(params: string, res: Response): Promise<{
         collections: any;
     }>;
 }
