@@ -1,0 +1,4 @@
+<%# 接收 collection 对象，可访问 collection.xxx 属性 %>
+  <li class="category-item">
+    <%= collection.title || collection.name || JSON.stringify(collection) %>
+  </li>

@@ -21,6 +21,6 @@ redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
 
 # 代理 - 将店铺请求代理到应用后端
 [app_proxy]
-url = "https://job-compare-shipment-florence.trycloudflare.com"
-subpath = "proxy"
+url = "https://wesley-consecutive-personal-base.trycloudflare.com"
+subpath = "cs-proxy"
 prefix = "apps"

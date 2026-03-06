@@ -18,4 +18,12 @@ export class AppController {
   getHealth(): { status: string } {
     return { status: 'ok' };
   }
+
+  @Get('collectionlist')
+  @Render('collection-list')
+  async etCollectionList(@Res() res: Response): Promise<{ collections: any }> {
+    const _collections = await this.appService.getCollectionList();
+    res.setHeader('Content-Type', 'application/liquid');
+    return { collections: _collections.hits };
+  }
 }

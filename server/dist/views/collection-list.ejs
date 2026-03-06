@@ -1,0 +1,11 @@
+{% layout 'app' %}
+<h3>collection-list-{{ shop.name }}</h3>
+
+<% collections.forEach(function(element) { %>
+  {% assign title = '<%= element.title %>' %}
+    {% assign price = '<%= element.price %>' %}
+      {% assign model_brand = '<%= element.meta.custom.model_brand %>' %}
+        {% assign sku = '<%= element.sku %>' %}
+          {% render 'test-collection-ejs', title: title, price: price, model_brand: model_brand | join:
+          ',', sku: sku %}
+          <% }); %>

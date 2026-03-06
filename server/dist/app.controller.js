@@ -26,6 +26,11 @@ let AppController = class AppController {
     getHealth() {
         return { status: 'ok' };
     }
+    async etCollectionList(res) {
+        const _collections = await this.appService.getCollectionList();
+        res.setHeader('Content-Type', 'application/liquid');
+        return { collections: _collections.hits };
+    }
 };
 exports.AppController = AppController;
 __decorate([
@@ -42,6 +47,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getHealth", null);
+__decorate([
+    (0, common_1.Get)('collectionlist'),
+    (0, common_1.Render)('collection-list'),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "etCollectionList", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
